@@ -1,5 +1,5 @@
 ##1번###
-select customerid, sum(quantity*price) as TotalPurchase
+select sum(quantity*price) as TotalPurchase
 from orders as o, orderdetails as d, products as p
 where o.orderid = d.orderid and d.productid = p.productid
 group by customerid
