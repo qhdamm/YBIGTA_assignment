@@ -2,11 +2,12 @@
 select sum(quantity*price) as TotalPurchase
 from orders as o, orderdetails as d, products as p
 where o.orderid = d.orderid and d.productid = p.productid
-group by customerid
+group by customerid;
 
 
 ##2번###
-select categoryid, quantity*unit as TotalQuantity, quantity*price as TotalSales
+select categoryid, sum(quantity*unit) as TotalQuantity, quantity*price as TotalSales
 from orderdetails as d, products as p
-where d.productid = p.productid and TotalQuantity>=2000
-group by d.productid;
+where d.productid = p.productid
+group by d.productid
+having TotalQuantity>=2000;
